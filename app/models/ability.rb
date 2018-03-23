@@ -9,10 +9,12 @@ class Ability
 		if current_user.owner?
 			can [:read], Unit, owner_id: current_user.id
 			can [:read], Booking, unit: {owner_id: current_user.id}
-		elsif current_user.operator?
+		end
+		if current_user.operator?
 			can :manage, Unit
 			can :manage, Booking
-		elsif current_user.admin?
+		end
+		if current_user.admin?
 			can :manage, :all
 		end
 	end
