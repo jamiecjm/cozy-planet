@@ -49,6 +49,4 @@ test:
 #
 production:
   <<: *default
-  database: cozy-planet_production
-  username: cozy-planet
-  password: <%= ENV['COZY-PLANET_DATABASE_PASSWORD'] %>
+  url: ENV['CLEARDB_DATABASE_URL']
