@@ -1,0 +1,10 @@
+<p>
+	Hi there,
+</p>
+<p>
+	Thanks for confirming your email. 
+</p>
+<p>
+	Click on the link below to set your password and we are all set to go!
+</p>
+<p><%= link_to 'Set my password', edit_password_url(@resource, reset_password_token: @token) %></p>

@@ -1,0 +1,101 @@
+@import "flexbox";
+@import "media-query-mixins";
+
+.logged_in #active_admin_content{
+    opacity: 0;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+}
+
+@include mobile-only{
+	body.logged_out #content_wrapper #active_admin_content{
+		max-width: 500px;
+	    margin: 0 auto;
+	}
+
+	body.logged_out #registration_new input[type=text], body.logged_out #registration_new input[type=password], 
+	body.logged_out #registration_new input[type=email], body.logged_out #registration_new input[type=number], 
+	body.logged_out #registration_new input[type=url], body.logged_out #registration_new input[type=tel], 
+	body.logged_out #registration_new input[type=date], body.logged_out #registration_new input[type=time], 
+	body.logged_out #registration_new textarea{
+		width: calc(80%) !important;
+	}
+
+	#registration_new fieldset ol > li label{
+		width: 50%;
+	}
+
+	#registration_new li{
+		@include flexbox();
+		@include flex-direction(column);		
+	}
+
+	.logged_in #active_admin_content{
+	    max-width: calc(100vw - 30px);
+    	overflow-x: hidden;
+		padding: 30px 15px;
+	    opacity: 0;
+	    -webkit-transition: opacity 0.4s ease-in-out;
+	    -moz-transition: opacity 0.4s ease-in-out;
+	    -ms-transition: opacity 0.4s ease-in-out;
+	    -o-transition: opacity 0.4s ease-in-out;
+	    transition: opacity 0.4s ease-in-out;
+	}
+
+	.logged_in #active_admin_content #main_content_wrapper #main_content{
+		margin-right: 0;
+	}
+
+	.logged_in #active_admin_content #main_content_wrapper.disabled{
+	    opacity: 0.4;
+    	pointer-events: none;
+	}
+
+	.logged_in #active_admin_content #main_content_wrapper{
+		-webkit-transition: opacity 0.4s ease-in-out;
+		-moz-transition: opacity 0.4s ease-in-out;
+		-ms-transition: opacity 0.4s ease-in-out;
+		-o-transition: opacity 0.4s ease-in-out;
+		transition: opacity 0.4s ease-in-out;
+	}
+
+	.action_item a{
+	    padding: 8px !important;
+    	font-size: 9px !important;
+	}
+
+	.logged_in form fieldset > ol > li:not(.has_many_container){
+		@include flexbox();
+		@include flex-direction(column);
+	}
+
+	.logged_in form fieldset ol > li label{
+		width: 50%;
+	}
+
+	.logged_in.sales li:nth-last-child(2){
+		display: list-item;
+	}
+
+	.logged_in.projects li:last-child{
+		display: list-item;
+	}
+
+	.logged_in .handle{
+		display: none !important;
+	}
+
+	.logged_in .has_many_delete label, .logged_in .boolean label{
+		padding-left: 0;
+	}
+
+	form .ui-sortable input[type=text], form .ui-sortable input[type=password], 
+	form .ui-sortable input[type=email], form .ui-sortable input[type=number], 
+	form .ui-sortable input[type=url], form .ui-sortable input[type=tel], form .ui-sortable textarea {
+	    width: calc(80% - 22px);
+	}
+
+}
