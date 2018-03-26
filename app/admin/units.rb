@@ -17,8 +17,10 @@
 
 ActiveAdmin.register Unit do
 
-	permit_params :owner_id, :unit_no, :street1, :street2, :city, :state, :zip_code, :room_count
+	permit_params :owner_id, :unit_no, :street1, :street2, :city, :state, :zip_code, :room_count, :calendar_label
 
+	menu false
+	
 	batch_action :destroy, false
 
 	active_admin_import timestamps: true
@@ -33,6 +35,7 @@ ActiveAdmin.register Unit do
 			input :state
 			input :zip_code
 			input :room_count
+			input :calendar_label, as: :color_picker
 		end
 		actions
 	end

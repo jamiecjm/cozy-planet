@@ -5,6 +5,7 @@ if params['calendar_type'] == 'default'
 	  json.description booking.guest
 	  json.start booking.check_in
 	  json.end booking.check_out
+	  json.color booking.unit.calendar_label
 	  json.url admin_booking_url(booking)
 	end
 elsif params['calendar_type'] == 'list_view'
@@ -14,6 +15,7 @@ elsif params['calendar_type'] == 'list_view'
 	  json.description booking.guest
 	  json.start booking.check_in
 	  json.end booking.check_in + 1.hour
+	  json.color booking.unit.calendar_label
 	  json.url admin_booking_url(booking)
 	end +
 	json.array!(@bookings) do |booking|
@@ -22,6 +24,7 @@ elsif params['calendar_type'] == 'list_view'
 	  json.description booking.guest
 	  json.start booking.check_out
 	  json.end booking.check_out + 1.hour
+	  json.color booking.unit.calendar_label
 	  json.url admin_booking_url(booking)
 	end
 else

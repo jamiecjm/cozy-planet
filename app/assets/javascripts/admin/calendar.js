@@ -2,11 +2,18 @@
 //= require fullcalendar
 
 $(document).ready(function(){
-	$('#calendar').fullCalendar({
-		events: '/admin/bookings.json?calendar_type=default'
+	var querystring = location.search
+	if( querystring === ''){
+		querystring = '?'
+	} else {
+		querystring += '&'
+	}
+	$('.index .calendar #calendar').fullCalendar({
+		events: '/admin/bookings.json'+querystring+'calendar_type=default',
+		displayEventTime: false
 	});
 
-	$('#calendar-list_view').fullCalendar({
+	$('.index .calendar #calendar-list_view').fullCalendar({
 		defaultView: 'listWeek',
 
 		// customize the button names,
@@ -22,6 +29,6 @@ $(document).ready(function(){
 		  center: '',
 		  right: 'listDay,listWeek,listMonth'
 		},
-		events: '/admin/bookings.json?calendar_type=list_view'
+		events: '/admin/bookings.json'+querystring+'calendar_type=list_view'
 	})
 });

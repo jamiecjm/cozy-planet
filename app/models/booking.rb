@@ -28,10 +28,21 @@ class Booking < ApplicationRecord
 	belongs_to :unit, optional: true
 	has_one :owner, through: :unit
 
+	scope :year, ->(year) {
+		where('extract(year from check_in) = ?', year)
+	}
+	scope :month, ->(month) {
+		where('extract(month from check_in) = ?', month.to_date.month)
+	}
+
 	enumerize :platform, in: ['Airbnb', 'Booking.com', 'Agoda']
 	enumerize :status, in: ['Completed', 'Confirmed', 'Pending', 'Cancelled']
 
 	before_save :calculate_cost
+
+	def self.ransackable_scopes(_auth_object = nil)
+	  [:year, :month]
+	end
 
 	protected
 

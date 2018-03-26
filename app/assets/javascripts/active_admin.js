@@ -1,5 +1,7 @@
 //= require active_admin/base
 //= require activeadmin_addons/all
+//= require Chart.bundle
+//= require chartkick
 //= require_tree ./admin
 
 $(window).on('load', function () {

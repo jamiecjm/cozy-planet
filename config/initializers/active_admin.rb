@@ -232,6 +232,9 @@ ActiveAdmin.setup do |config|
     config.namespace :admin do |admin|
       admin.build_menu :default do |menu|
         menu.add label: ' ', priority: 0, url: '#', id: 'menu', class: 'mobile-only'
+        menu.add label: 'Calendar', priority: 2, url: proc{admin_bookings_path(as: 'calendar')}
+        menu.add label: 'Units', priority: 3, url: proc{admin_units_path}
+        menu.add label: 'Reports', priority: 4, url: proc{admin_bookings_path(as: 'report')}
         menu.add label: 'Profile', url: proc{ admin_user_path(current_user) }, priority: 99
         menu.add label: 'Logout', url: proc {destroy_user_session_path}, priority: 100
       end
@@ -263,7 +266,7 @@ ActiveAdmin.setup do |config|
   # Pagination is enabled by default for all resources.
   # You can control the default per page count for all resources here.
   #
-  # config.default_per_page = 30
+  config.default_per_page = 15
   #
   # You can control the max per page count too.
   #

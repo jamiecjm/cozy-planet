@@ -6,17 +6,17 @@ ActiveAdmin.register_page "Dashboard" do
 
     # Here is an example of a simple dashboard with columns and panels.
     #
-    columns do
-      panel "Calender", class: 'calendar' do
-        columns do
-          column do
-            div id: 'calendar'
-          end
-          column do
-            div id: 'calendar-list_view'
-          end
-        end
-      end
-    end
+    # columns do
+    #   panel "Calender", class: 'calendar' do
+    #     columns do
+    #       column do
+    #         div id: 'calendar'
+    #       end
+    #       column do
+    #         div id: 'calendar-list_view'
+    #       end
+    #     end
+    #   end
+    # end
   end # content
 end
