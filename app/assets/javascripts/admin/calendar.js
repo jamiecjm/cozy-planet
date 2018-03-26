@@ -10,7 +10,12 @@ $(document).ready(function(){
 	}
 	$('.index .calendar #calendar').fullCalendar({
 		events: '/admin/bookings.json'+querystring+'calendar_type=default',
-		displayEventTime: false
+		displayEventTime: false,
+		eventAfterRender: function (event, element, view) {
+		    if (!$(element).hasClass('fc-start')){
+		   		$(element, "a").css('color', $(element).css('background-color'));
+		    }
+		}
 	});
 
 	$('.index .calendar #calendar-list_view').fullCalendar({

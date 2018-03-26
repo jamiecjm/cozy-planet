@@ -1,7 +1,7 @@
 if params['calendar_type'] == 'default'
 	json.array!(@bookings) do |booking|
 	  json.id booking.id
-	  json.title booking.unit.unit_no
+	  json.title "#{booking.guest} - #{booking.unit.unit_no}"
 	  json.description booking.guest
 	  json.start booking.check_in
 	  json.end booking.check_out
@@ -11,7 +11,7 @@ if params['calendar_type'] == 'default'
 elsif params['calendar_type'] == 'list_view'
 	json.array!(@bookings) do |booking|
 	  json.id booking.id
-	  json.title booking.unit.unit_no + ' Check In'
+	  json.title "#{booking.guest} - #{booking.unit.unit_no} Check In"
 	  json.description booking.guest
 	  json.start booking.check_in
 	  json.end booking.check_in + 1.hour
@@ -20,7 +20,7 @@ elsif params['calendar_type'] == 'list_view'
 	end +
 	json.array!(@bookings) do |booking|
 	  json.id booking.id
-	  json.title booking.unit.unit_no + ' Check Out'
+	  json.title "#{booking.guest} - #{booking.unit.unit_no} Check Out"
 	  json.description booking.guest
 	  json.start booking.check_out
 	  json.end booking.check_out + 1.hour

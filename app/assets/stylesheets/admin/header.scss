@@ -233,3 +233,17 @@
 		display: none !important;
 	}
 }
+
+#header ul.tabs > li.current > a{
+	background-color: inherit;
+	color: #cdcdcd;
+}
+
+#header ul.tabs > li.current:hover > a{
+	background-color: inherit;
+	color: #fff;
+}
+
+#header ul.tabs > li:hover > a{
+	background-color: inherit;
+}
