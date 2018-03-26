@@ -30,6 +30,66 @@ batch_action :destroy, false
 
 active_admin_import timestamps: true
 
+index pagination_total: false do
+	id_column
+	column :unit
+	column :platform
+	column :status
+	column :guest
+	column :check_in
+	column :check_out
+	number_column :rate, as: :currency, unit: ''
+	number_column 'Nights', :no_of_nights
+	number_column :subtotal, as: :currency, unit: '' do |b|
+		b.rate * b.no_of_nights
+	end
+	number_column :extra_fee, as: :currency, unit: ''
+	number_column :cleaning_fee, as: :currency, unit: '' if current_user.operator?
+	number_column :platform_service_fee, as: :currency, unit: ''
+	if current_user.operator?
+		number_column :total, as: :currency, unit: ''
+		number_column :total_without_cleaning, as: :currency, unit: ''
+	else
+		number_column 'Total', :total_without_cleaning, as: :currency, unit: ''
+	end
+	number_column :average_rate, as: :currency, unit: ''
+	column :remark
+	actions
+end
+
+show do
+	attributes_table do
+		row :id
+		row :unit
+		row :platform
+		row :status
+		row :guest
+		row :check_in
+		row :check_out
+		number_row :rate, as: :currency, unit: ''
+		number_row 'Nights' do |b|
+			b.no_of_nights
+		end
+		number_row :subtotal, as: :currency, unit: '' do |b|
+			b.rate * b.no_of_nights
+		end
+		number_row :extra_fee, as: :currency, unit: ''
+		number_row :cleaning_fee, as: :currency, unit: '' if current_user.operator?
+		number_row :platform_service_fee, as: :currency, unit: ''
+		if current_user.operator?
+			number_row :total, as: :currency, unit: ''
+			number_row :total_without_cleaning, as: :currency, unit: ''
+		else
+			number_row 'Total', as: :currency, unit: '' do |b| 
+				b.total_without_cleaning
+			end
+		end
+		number_row :average_rate, as: :currency, unit: ''
+		row :remark
+	end
+	active_admin_comments
+end
+
 form do |f|
 	inputs do
 		input :unit

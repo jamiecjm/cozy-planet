@@ -16,7 +16,7 @@
 #  platform_service_fee   :float(24)        default(0.0)
 #  total                  :float(24)        default(0.0)
 #  total_without_cleaning :float(24)        default(0.0)
-#  averate_rate           :float(24)        default(0.0)
+#  average_rate           :float(24)        default(0.0)
 #  remark                 :text(65535)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

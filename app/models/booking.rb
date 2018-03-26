@@ -16,7 +16,7 @@
 #  platform_service_fee   :float(24)        default(0.0)
 #  total                  :float(24)        default(0.0)
 #  total_without_cleaning :float(24)        default(0.0)
-#  averate_rate           :float(24)        default(0.0)
+#  average_rate           :float(24)        default(0.0)
 #  remark                 :text(65535)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -44,7 +44,7 @@ class Booking < ApplicationRecord
 	end
 
 	def calculate_average_rate
-		self.averate_rate = total_without_cleaning/no_of_nights
+		self.average_rate = total_without_cleaning/no_of_nights
 	end
 
 	private
