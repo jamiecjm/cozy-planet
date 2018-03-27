@@ -49,7 +49,6 @@ test:
 #
 production:
   <<: *default
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  database: cozy-planet_production
+  username: cozy-planet
+  password: <%= ENV['COZY-PLANET_DATABASE_PASSWORD'] %>
