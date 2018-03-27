@@ -44,22 +44,28 @@ class User < ApplicationRecord
   	has_many :units, dependent: :destroy
   	has_many :bookings, through: :units
 
-  	enumerize :user_type, in: [:owner, :operator]
+  	enumerize :user_type, in: ['Owner', 'Operator']
 
-  	scope :owner, ->{where(user_type: :owner)}
-  	scope :operator, ->{where(user_type: :operator)}
+  	scope :owner, ->{where(user_type: 'Owner')}
+  	scope :operator, ->{where(user_type: 'Operator')}
 
   	before_validation :generate_password, if: proc {new_record?}
 
     after_save :send_welcome_email
 
   	def owner?
-  		user_type == :owner
+  		user_type == 'Owner'
   	end
 
   	def operator?
-  		user_type == :operator
+  		user_type == 'Operator'
   	end
+
+    def skip_welcome!
+      user.welcomed_at = Time.now
+    end
+
+    private
 
   	def generate_password
   		self.password = Devise.friendly_token.first(8)
