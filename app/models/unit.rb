@@ -4,12 +4,12 @@
 #
 #  id             :integer          not null, primary key
 #  owner_id       :integer
-#  unit_no        :string(255)
-#  street1        :string(255)
-#  street2        :string(255)
-#  city           :string(255)
-#  state          :string(255)
-#  zip_code       :string(255)
+#  unit_no        :string
+#  street1        :string
+#  street2        :string
+#  city           :string
+#  state          :string
+#  zip_code       :string
 #  room_count     :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20180326033423) do
 
-  create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
@@ -26,27 +29,27 @@ ActiveRecord::Schema.define(version: 20180326033423) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "bookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "bookings", force: :cascade do |t|
     t.integer "unit_id"
     t.string "platform"
     t.string "status"
     t.string "guest"
     t.datetime "check_in"
     t.datetime "check_out"
-    t.float "rate", limit: 24, default: 0.0
+    t.float "rate", default: 0.0
     t.integer "no_of_nights", default: 1
-    t.float "extra_fee", limit: 24, default: 0.0
-    t.float "cleaning_fee", limit: 24, default: 0.0
-    t.float "platform_service_fee", limit: 24, default: 0.0
-    t.float "total", limit: 24, default: 0.0
-    t.float "total_without_cleaning", limit: 24, default: 0.0
-    t.float "average_rate", limit: 24, default: 0.0
+    t.float "extra_fee", default: 0.0
+    t.float "cleaning_fee", default: 0.0
+    t.float "platform_service_fee", default: 0.0
+    t.float "total", default: 0.0
+    t.float "total_without_cleaning", default: 0.0
+    t.float "average_rate", default: 0.0
     t.text "remark"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "units", force: :cascade do |t|
     t.integer "owner_id"
     t.string "unit_no"
     t.string "street1"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180326033423) do
     t.string "calendar_label", limit: 7
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "mobile_no"
     t.string "email", default: "", null: false
