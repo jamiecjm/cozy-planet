@@ -40,32 +40,32 @@ before_action do
 	end
 end
 
-# index pagination_total: false do
-# 	id_column
-# 	column :unit
-# 	column :platform
-# 	column :status
-# 	column :guest
-# 	column :check_in
-# 	column :check_out
-# 	number_column :rate, as: :currency, unit: ''
-# 	number_column 'Nights', :no_of_nights
-# 	number_column :subtotal, as: :currency, unit: '' do |b|
-# 		b.rate * b.no_of_nights
-# 	end
-# 	number_column :extra_fee, as: :currency, unit: ''
-# 	number_column :cleaning_fee, as: :currency, unit: '' if current_user.operator?
-# 	number_column :platform_service_fee, as: :currency, unit: ''
-# 	if current_user.operator?
-# 		number_column :total, as: :currency, unit: ''
-# 		number_column :total_without_cleaning, as: :currency, unit: ''
-# 	else
-# 		number_column 'Total', :total_without_cleaning, as: :currency, unit: ''
-# 	end
-# 	number_column :average_rate, as: :currency, unit: ''
-# 	column :remark
-# 	actions
-# end
+index pagination_total: false do
+	id_column
+	column :unit
+	column :platform
+	column :status
+	column :guest
+	column :check_in
+	column :check_out
+	number_column :rate, as: :currency, unit: ''
+	number_column 'Nights', :no_of_nights
+	number_column :subtotal, as: :currency, unit: '' do |b|
+		b.rate * b.no_of_nights
+	end
+	number_column :extra_fee, as: :currency, unit: ''
+	number_column :cleaning_fee, as: :currency, unit: '' if current_user.operator?
+	number_column :platform_service_fee, as: :currency, unit: ''
+	if current_user.operator?
+		number_column :total, as: :currency, unit: ''
+		number_column :total_without_cleaning, as: :currency, unit: ''
+	else
+		number_column 'Total', :total_without_cleaning, as: :currency, unit: ''
+	end
+	number_column :average_rate, as: :currency, unit: ''
+	column :remark
+	actions
+end
 
 before_action do
 	params['q'] = {} if params['q'].blank?

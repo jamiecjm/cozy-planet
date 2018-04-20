@@ -57,7 +57,12 @@ ActiveAdmin.register User do
       row :current_sign_in_at
       row :sign_in_count
       row :created_at
+      row 'Google Sheet' do
+        link_to 'Connect Google Sheet', api_v1_google_oauth_path
+      end
     end
+
+
   end
 
   filter :name

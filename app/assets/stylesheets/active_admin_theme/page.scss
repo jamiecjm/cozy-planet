@@ -3,13 +3,38 @@
 
 .logged_in #active_admin_content{
     opacity: 0;
-    -webkit-transition: opacity 0.4s ease-in-out;
-    -moz-transition: opacity 0.4s ease-in-out;
-    -ms-transition: opacity 0.4s ease-in-out;
-    -o-transition: opacity 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out;
+    overflow-x: hidden; 
+    -webkit-transition: padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    -moz-transition: padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    -ms-transition: padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    -o-transition: padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    transition: padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 
+.index:not(.dashboard) #active_admin_content #main_content_wrapper #main_content {
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+    @include mobile-only{
+    	padding: 10px;
+    }
+}
+
+#index_footer{
+	height: 20px;
+}
+
+.logged_in #active_admin_content #main_content_wrapper #main_content{
+	margin-right: 0;
+}
+
+.logged_in #active_admin_content #main_content_wrapper.disabled{
+    opacity: 0.4;
+	pointer-events: none;
+}
+	
 @include mobile-only{
 	body.logged_out #content_wrapper #active_admin_content{
 		max-width: 500px;
@@ -43,15 +68,6 @@
 	    -ms-transition: opacity 0.4s ease-in-out;
 	    -o-transition: opacity 0.4s ease-in-out;
 	    transition: opacity 0.4s ease-in-out;
-	}
-
-	.logged_in #active_admin_content #main_content_wrapper #main_content{
-		margin-right: 0;
-	}
-
-	.logged_in #active_admin_content #main_content_wrapper.disabled{
-	    opacity: 0.4;
-    	pointer-events: none;
 	}
 
 	.logged_in #active_admin_content #main_content_wrapper{
@@ -98,4 +114,7 @@
 	    width: calc(80% - 22px);
 	}
 
+	.download_links{
+		display: none;
+	}
 }

@@ -20,6 +20,7 @@ class Unit < ApplicationRecord
 
 	belongs_to :owner, ->{owner}, class_name: 'User', optional: true
 	has_many :bookings, dependent: :destroy
+	has_many :expenses, dependent: :destroy
 
 	def display_name
 		unit_no

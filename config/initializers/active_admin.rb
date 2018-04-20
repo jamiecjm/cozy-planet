@@ -180,7 +180,7 @@ ActiveAdmin.setup do |config|
   # Breadcrumbs are enabled by default. You can customize them for individual
   # resources or you can disable them globally from here.
   #
-  # config.breadcrumb = false
+  config.breadcrumb = false
 
   # == Create Another Checkbox
   #
@@ -233,8 +233,9 @@ ActiveAdmin.setup do |config|
       admin.build_menu :default do |menu|
         menu.add label: ' ', priority: 0, url: '#', id: 'menu', class: 'mobile-only'
         menu.add label: 'Calendar', priority: 2, url: proc{admin_bookings_path(as: 'calendar')}
-        menu.add label: 'Units', priority: 3, url: proc{admin_units_path}
-        menu.add label: 'Reports', priority: 4, url: proc{admin_bookings_path(as: 'report')}
+        menu.add label: 'Bookings', priority: 3, url: proc{admin_bookings_path(as: 'table')}
+        menu.add label: 'Units', priority: 4, url: proc{admin_units_path}
+        menu.add label: 'Reports', priority: 5, url: proc{admin_bookings_path(as: 'report')}
         menu.add label: 'Profile', url: proc{ admin_user_path(current_user) }, priority: 99
         menu.add label: 'Logout', url: proc {destroy_user_session_path}, priority: 100
       end

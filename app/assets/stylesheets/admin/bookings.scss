@@ -1,3 +1,6 @@
+@import "flexbox";
+@import "media-query-mixins";
+
 .index_as_report .columns{
 	max-width: 800px;
 }
@@ -8,4 +11,21 @@
 
 .index.admin_bookings #index_footer{
 	display: none;
+}
+
+@include desktop-only(){
+
+	table.index_table td:not(.col-remark){
+		white-space: nowrap;
+	}
+
+	// th[class^='col col-ren'] {
+	//     white-space: nowrap;  
+	// }
+
+	.col-remark {
+		max-width: 200px;
+		min-width: 150px;
+		
+	}
 }

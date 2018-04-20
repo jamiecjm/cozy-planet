@@ -1,0 +1,88 @@
+@import "flexbox";
+@import "media-query-mixins";
+
+body.logged_in {
+    min-height: 80vh;
+    background-color: #F4F4F4;
+	position: relative;
+}
+
+body.logged_out{
+    min-height: 100vh;
+    background-color: #F4F4F4;
+}
+
+img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+a:hover{
+    opacity: 0.6;
+}
+
+.desktop-only{
+	@include mobile-only{
+		display: none;
+	}
+}
+
+.mobile-only{
+	@include desktop-only{
+		display: none;
+	}
+}
+
+.card{
+	height: 60px;
+    background-color: white;
+    box-shadow: 0 4px 4px 0 #F2F2F2;
+    @include flex-basis(calc(100%/5 - 50px));
+    @include flexbox();
+    @include align-items(center);
+    margin: 5px;
+    padding: 20px;
+	@media only screen
+	and (max-width: 1056px) {
+		@include flex-basis(calc(100%/4 - 50px));
+	}
+	@media only screen
+	and (max-width: 903px) {
+		@include flex-basis(calc(100%/2 - 50px));
+	}
+}
+
+.card:nth-child(6n+1){
+	background-color: #ff7373;
+}
+
+.card:nth-child(6n+2){
+	background-color: #40e0d0;
+}
+
+.card:nth-child(6n+3){
+	background-color: #c6e2ff;
+}
+
+.card:nth-child(6n+4){
+	background-color: #ffa500;
+}
+
+.card:nth-child(6n+5){
+	background-color: #ffc3a0;
+}
+
+.card:nth-child(6n+6){
+	background-color: #088da5;
+}
+
+.card-content{
+	font-size: 18px;
+	margin: 0 auto;
+	color: white;
+	text-align: center;
+}

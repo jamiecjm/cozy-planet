@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326033423) do
+ActiveRecord::Schema.define(version: 20180329084300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,22 @@ ActiveRecord::Schema.define(version: 20180326033423) do
     t.text "remark"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "unit_id"
+    t.date "date"
+    t.string "description"
+    t.float "amount", default: 0.0
+    t.float "discount", default: 0.0
+    t.integer "no_of_items", default: 1
+    t.float "total", default: 0.0
+    t.text "remark"
+    t.boolean "claimed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_expenses_on_category_id"
   end
 
   create_table "units", force: :cascade do |t|
